@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
-void main(){
+void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Home(),
@@ -17,12 +17,40 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   List _toDoList = [];
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Lista de Tarefas"),
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.fromLTRB(17.0, 1.0, 7.0, 1.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        labelText: "Nova Tarefa",
+                        labelStyle: TextStyle(color: Colors.blueAccent)),
+                  ),
+                ),
+                RaisedButton(
+                  color: Colors.blueAccent,
+                  child: Text("ADD"),
+                  onPressed: () {},
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   Future<File> _getFile() async {
@@ -46,5 +74,3 @@ class _HomeState extends State<Home> {
     }
   }
 }
-
-
